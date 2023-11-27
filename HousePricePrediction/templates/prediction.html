@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/predicction.css') }}">
+    <!--<link rel="stylesheet" href="prediction.css">-->
+</head>
+
+<body>
+  <h1>House Price Prediction Page</h1>
+
+    <form  method="POST" accept-charset="UTF-8">
+        
+        <div class="elem-group">
+            <label>Enter the Location</label>
+            <select id="locat" name="location" required>
+              {% for Location in locations %}
+                <option value="{{Location}}">{{Location}}</option>
+              {% endfor %}
+                <!--<option value="connecting">Asalpha Ghatkopar</option>
+                <option value="adjoining">Pant Nagar Ghatkopar</option>
+                <option value="adjacent">Nitin Company Thane</option>-->
+            </select>
+            <!--<input type="text" id="room-selection" name="room_preference" placeholder="Thane" required>-->
+        </div>
+
+        <div class="elem-group inlined">
+          <label for="Area">Enter Area in SQ.Meters</label>
+          <input type="text" id="adult" name="area" placeholder="475"  required>
+        </div>
+
+        <div class="elem-group">
+          <label for="BHK">Enter BHK</label>
+          <input type="text" id="email" name="BHK" placeholder="1,2,3 BHK" required>
+        </div>
+        
+        <div class="elem-group">
+          <label for="Gymnasium">Enter No Of Gymnasium</label>
+          <input type="text" id="phone" name="gymnasium" placeholder="1 , 2" required >
+        </div>
+
+        <div class="elem-group">
+          <label for="Lifts">Enter No Of Lifts</label>
+          <input type="text" id="phone" name="lift" placeholder="1 , 2" required >
+        </div>
+        <!--<hr>
+        
+         <div class="elem-group inlined">
+          <label for="child">Children</label>
+          <input type="number" id="child" name="total_children" placeholder="2" min="0" required>
+        </div>
+        <div class="elem-group inlined">
+          <label for="checkin-date">Check-in Date</label>
+          <input type="date" id="checkin-date" name="checkin" required>
+        </div>
+        <div class="elem-group inlined">
+          <label for="checkout-date">Check-out Date</label>
+          <input type="date" id="checkout-date" name="checkout" required>
+        </div>
+        <div class="elem-group">
+          <label for="room-selection">Select the Location</label>
+          <select id="room-selection" name="room_preference" required>
+              <option value="">Choose a Room from the List</option>
+              <option value="connecting">Asalpha Ghatkopar</option>
+              <option value="adjoining">Pant Nagar Ghatkopar</option>
+              <option value="adjacent">Nitin Company Thane</option>
+          </select>
+        </div>
+        <hr>
+        <div class="elem-group">
+          <label for="message">Anything Else?</label>
+          <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
+        </div>-->
+        <button type="submit" onclick="send_data()">Predict the Price </button>
+      </form>
+      <br>
+      <div class="elem-group">
+        <h3><span id = "prediction"></span></h3>
+      </div>
+</body>
+<script>
+  function form_handler(event){
+    event.preventDefault();
+  }
+  function send_data()
+  {
+    document.querySelector('form').addEventListener("submit",form_handler);
+    var fd = new FormData(document.querySelector('form'));
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','/predict',true);
+    document.getElementById("prediction").innerHTML = "Wait Predicting Price!...";
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == XMLHttpRequest.DONE){
+        document.getElementById('prediction').innerHTML="The House will cost you: ₹"+xhr.responseText;
+
+      }
+    };
+    xhr.onload = function(){};
+    xhr.send(fd);
+  }
+</script>
+</html>

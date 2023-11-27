@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-image: linear-gradient(rgba(4, 42, 255, 0.971),#ebebf0),url(image2.jpg);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(6, 33, 242, 0.932);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #e4ecff;
+  color: rgb(0, 0, 0); 
+  font-size: larger;
+  background-image: linear-gradient(rgba(239, 237, 237, 0.971),#1100ff),url(image3.jpg);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #0800ff;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>About Us</h1>
+  <p>The real estate market is an essential sector of any economy, and accurate price predictions 
+    are vital for homebuyers, real estate agents, and property investors to make informed decisions.
+         However, predicting the price of a house accurately can be challenging, 
+    as many factors, such as location, size, condition, and amenities, can impact its value.
+  We will collect and preprocess a dataset containing information about houses sold in a particular area over a certain period,
+     identify relevant features that are most strongly 
+    correlated with house prices, and develop a machine learning model to predict house prices.</p>
+
+    <img src="{{ url_for('static',filename='css/newlog.jpeg') }}" alt="ucl" style="width:20%" >
+  <h1>House Price Prediction</h1>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="{{ url_for('static',filename='css/kalpeshpass.jpg') }}" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Kalpesh Chavan</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Very Ambitious Personality, Good Team Leader.</p>
+        <p>kalpschavan@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="{{ url_for('static',filename='css/ankitpass.jpg') }}" alt="Mike" style="width:100%">
+      <div class="container">
+        <h2>Ankit Awade</h2>
+        <p class="title">Art Director</p>
+        <p>Guy who works hard for the Target</p>
+        <p>ankitbond@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="{{ url_for('static',filename='css/siddhantpass.jpeg') }}" alt="John" style="width:100%">
+      <div class="container">
+        <h2>Siddhant Darekar</h2>
+        <p class="title">Designer</p>
+        <p>Always Ready For the Every Challenge.</p>
+        <p>sid@123gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
